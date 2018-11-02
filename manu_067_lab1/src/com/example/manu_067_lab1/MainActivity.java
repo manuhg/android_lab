@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.os.Handler;
 
 public class MainActivity extends Activity implements OnClickListener, Runnable {
 	int i = 0;
@@ -39,8 +40,9 @@ public class MainActivity extends Activity implements OnClickListener, Runnable 
 	public void run() {
 		while (i < 10000 && running) {
 			try {
-				thread.sleep(100);
-			} catch (InterruptedException e) {
+				thread.sleep(1000);
+			}
+			catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			handler.sendEmptyMessage(i);
@@ -67,4 +69,5 @@ public class MainActivity extends Activity implements OnClickListener, Runnable 
 			counter.setText(" " + m.what);
 		}
 	};
+
 }
