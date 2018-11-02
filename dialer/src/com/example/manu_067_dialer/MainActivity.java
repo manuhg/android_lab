@@ -64,11 +64,11 @@ public class MainActivity extends Activity implements OnClickListener {
 				if (n > 0)
 					s = s.substring(0, n - 1);
 				telnum.setText(s);
-				telnum.setSelection(n-1);
+				telnum.setSelection(n - 1);
 			} else if (v.equals(call)) {
 				String num = telnum.getText().toString();
-				Intent it = new Intent(Intent.ACTION_CALL);
-				it.setData(Uri.parse("tel:" + num));
+				Intent it = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"
+						+ num));
 				startActivity(it);
 			} else if (v.equals(save)) {
 				String num = telnum.getText().toString();
