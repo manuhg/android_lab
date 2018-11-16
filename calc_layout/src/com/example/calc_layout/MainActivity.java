@@ -14,13 +14,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.example.calculator.calculator;
 public class MainActivity extends Activity implements OnClickListener,
 		ServiceConnection {
 	EditText txtfirst, txtsecond;
 	Button btnadd, btnsub, btnmul;
 	TextView txtresult;
-	Mycalc cal;
+	calculator cal;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class MainActivity extends Activity implements OnClickListener,
 		btnsub.setOnClickListener(this);
 		btnmul = (Button) findViewById(R.id.btn_mul);
 		btnmul.setOnClickListener(this);
-		bindService(new Intent("com.simple.cal"), this, BIND_AUTO_CREATE);
+		bindService(new Intent("com.sample.cal"), this, BIND_AUTO_CREATE);
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public class MainActivity extends Activity implements OnClickListener,
 		if (v.equals(btnadd)) {
 			try {
 				int result = cal.add(a, b);
-				txtresult.setText("" + result);
+				txtresult.setText(Integer.toString(result));
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -63,7 +63,8 @@ public class MainActivity extends Activity implements OnClickListener,
 		} else if (v.equals(btnsub)) {
 			try {
 				int result = cal.sub(a, b);
-				txtresult.setText("" + result);
+				
+				txtresult.setText(Integer.toString(result));
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -71,7 +72,7 @@ public class MainActivity extends Activity implements OnClickListener,
 		} else if (v.equals(btnmul)) {
 			try {
 				int result = cal.mul(a, b);
-				txtresult.setText("" + result);
+				txtresult.setText(Integer.toString(result));
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

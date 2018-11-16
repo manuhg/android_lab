@@ -23,9 +23,9 @@
             </intent-filter>
         </activity>
 
-        <service android:name="Mycalc" >
+        <service android:name="Mycalc.class" >
             <intent-filter>
-                <action android:name="com.example.calc_layout" />
+                <action android:name="com.sample.cal" />
             </intent-filter>
         </service>
     </application>
